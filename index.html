@@ -1,74 +1,31 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Paquetes de Servicios</title>
-    <link rel="stylesheet" href="style.css">
-    <!-- Script de Unlock Protocol -->
-    <script src="https://unlock-protocol.com/static/unlock.1.0.min.js"></script>
+    <title>Paquetes</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <header>
-        <h1>Paquetes de Servicios</h1>
-    </header>
-    <main>
-        <section class="pricing">
-            <div class="package basic">
-                <h2>Paquete Gratuito - TURISTA SEGURO</h2>
-                <p>Descripción del paquete básico.</p>
-                <p>Precio: $1</p>
-                <button class="unlock-button" data-key="basic-lock-address">Comprar</button>
-            </div>
-            <div class="package intermediate">
-                <h2>Paquete Plus - TURISTA PLATINUM</h2>
-                <p>Descripción del paquete intermedio.</p>
-                <p>Precio: $15</p>
-                <button class="unlock-button" data-key="intermediate-lock-address">Comprar</button>
-            </div>
-            <div class="package advanced">
-                <h2>Paquete Premium - TURISTA GOLDEN</h2>
-                <p>Descripción del paquete avanzado.</p>
-                <p>Precio: $20</p>
-                <button class="unlock-button" data-key="advanced-lock-address">Comprar</button>
-            </div>
-        </section>
-    </main>
-    
-    <script> 
-        // Configuración de Unlock Protocol
-         var unlockConfig = {
-            locks: {
-                'basic-lock-address': {
-                    name: 'Básico',
-                    network: 11155111,  Mainnet
-                },
-                'intermediate-lock-address': {
-                    name: 'Intermedio',
-                    network: 11155111,  Mainnet
-                },
-                'advanced-lock-address': {
-                    name: 'Avanzado',
-                    network: 11155111,  Mainnet
-                }
-            icon: 'https://app.unlock-protocol.com/checkout?id=aa5b8063-a996-44fe-9dcd-8d9236ad2e10',
-            callToAction: {
-                default: '¡Compra tu acceso ahora!',
-                expired: 'Tu acceso ha expirado, renueva tu membresía.',
-            },
-            persistentCheckout: false,
-        };
+    <div class="container">
+        <h1>Paquetes</h1>
+        <div class="package">
+            <h2>Basico</h2>
+            <p>$10</p>
+            <button class="buy-btn" data-package="basic">Compra ahora</button>
+        </div>
+        <div class="package">
+            <h2>Intermedio</h2>
+            <p>$20</p>
+            <button class="buy-btn" data-package="intermediate">Compra ahora</button>
+        </div>
+        <div class="package">
+            <h2>Avanzado</h2>
+            <p>$30</p>
+            <button class="buy-btn" data-package="advanced">Compra Ahora</button>
+        </div>
+    </div>
 
-        // Inicializar Unlock Protocol
-        var unlockProtocol = new UnlockProtocol(unlockConfig);
-
-        // Añadir eventos a los botones
-        document.querySelectorAll('.unlock-button').forEach(button => {
-            button.addEventListener('click', (event) => {
-                const lockAddress = event.target.getAttribute('data-key');
-                unlockProtocol.purchaseKey({ lockAddress });
-            });
-        });
-    </script>
+    <script src="script.js"></script>
 </body>
 </html>
