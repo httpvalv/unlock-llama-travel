@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Paquetes de Servicios</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Script de Unlock Protocol -->
+    <script src="https://unlock-protocol.com/static/unlock.1.0.min.js"></script>
+</head>
+<body>
+    <header>
+        <h1>Paquetes de Servicios</h1>
+    </header>
+    <main>
+        <section class="pricing">
+            <div class="package basic">
+                <h2>Básico</h2>
+                <p>Descripción del paquete básico.</p>
+                <p>Precio: $10</p>
+                <button class="unlock-button" data-key="basic-lock-address">Comprar</button>
+            </div>
+            <div class="package intermediate">
+                <h2>Intermedio</h2>
+                <p>Descripción del paquete intermedio.</p>
+                <p>Precio: $20</p>
+                <button class="unlock-button" data-key="intermediate-lock-address">Comprar</button>
+            </div>
+            <div class="package advanced">
+                <h2>Avanzado</h2>
+                <p>Descripción del paquete avanzado.</p>
+                <p>Precio: $30</p>
+                <button class="unlock-button" data-key="advanced-lock-address">Comprar</button>
+            </div>
+        </section>
+    </main>
+    
+    <script> 
+        // Configuración de Unlock Protocol
+         var unlockConfig = {
+            locks: {
+                'basic-lock-address': {
+                    name: 'Básico',
+                    network: #, // Mainnet
+                },
+                'intermediate-lock-address': {
+                    name: 'Intermedio',
+                    network: #, // Mainnet
+                },
+                'advanced-lock-address': {
+                    name: 'Avanzado',
+                    network: #, // Mainnet
+                }
+            },
+            icon: 'https://app.unlock-protocol.com/checkout?id=aa5b8063-a996-44fe-9dcd-8d9236ad2e10',
+            callToAction: {
+                default: '¡Compra tu acceso ahora!',
+                expired: 'Tu acceso ha expirado, renueva tu membresía.',
+            },
+            persistentCheckout: false,
+        };
+
+        // Inicializar Unlock Protocol
+        var unlockProtocol = new UnlockProtocol(unlockConfig);
+
+        // Añadir eventos a los botones
+        document.querySelectorAll('.unlock-button').forEach(button => {
+            button.addEventListener('click', (event) => {
+                const lockAddress = event.target.getAttribute('data-key');
+                unlockProtocol.purchaseKey({ lockAddress });
+            });
+        });
+    </script>
+</body>
+</html>
